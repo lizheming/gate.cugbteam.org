@@ -150,7 +150,7 @@
     }
 
     @media screen and (max-width:600px) {
-        .ds-thread,.ds-thread-button {
+        .ds-thread,.absolute-button {
             display: none
         }
     }
@@ -182,12 +182,19 @@
     .ds-thread-button {
         background: #fcebbd;
         color: #af9540;
+    }
+
+    .button-c {
+        background: #d3eda3;
+        color: #72962e;
+    }
+
+    .absolute-button {
         position: absolute;
         bottom: 10px;
         right: 20px;
         z-index: 20
     }
-
     .ds-thread.show {
         margin-right: 0
     }	
@@ -432,8 +439,11 @@
 		})(319640);
     </script>
 
+    <div class="absolute-button">
+        <a href="http://beidi.cugbteam.org" title="北地北地!" class="pure-button button-c">北地北地!</a>
+        <button class="ds-thread-button pure-button button-b">说点什么？</button>   
+    </div>
     <!-- 多说评论框 start -->
-    <button class="ds-thread-button pure-button button-b">说点什么？</button>
     <div class="ds-thread" data-thread-key="index" data-title="网关登陆页面" data-url="http://gate.cugbteam.org"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
