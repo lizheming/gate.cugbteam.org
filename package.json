@@ -20,7 +20,6 @@
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-inline-source": "^2.0.0",
-    "gulp-replace": "^0.5.3",
     "gulp-watch": "^4.2.4"
   }
 }
