@@ -1,0 +1,26 @@
+{
+  "name": "gate.cugbteam.org",
+  "version": "1.0.0",
+  "description": "CUGB Network Login",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.cugbteam.org:lizheming/gate.cugbteam.org.git"
+  },
+  "keywords": [
+    "gate",
+    "cugb",
+    "network"
+  ],
+  "author": "lizheming",
+  "license": "GPL",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-inline-source": "^2.0.0",
+    "gulp-replace": "^0.5.3",
+    "gulp-watch": "^4.2.4"
+  }
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>中国地质大学(北京)网关登录</title>
+    <meta http-equiv="pragma" content="no-cache"> 
+	<meta http-equiv="Cache-Control" content="no-cache, must-revalidate"> 
+	<meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="shortcut icon" href="resources/img/icon_64.png" type="image/png" />
+    <link rel="apple-touch-icon" href="resources/img/apple-touch-icon.png" />
+    <link rel="stylesheet" type="text/css" href="resources/css/pure.css">
+    <link rel="stylesheet" href="style.css" inline>
+</head>
+<body>
+    <h2>中国地质大学(北京)网关登录</h2>
+    <form class="pure-form" role="form" method="post" target="send">
+        <fieldset class="pure-group">
+            <input class="pure-input-1" type="text" placeholder="学号" name="username" autocomplete="off" required/>
+            <input class="pure-input-1" type="password" placeholder="密码" name="password" autocomplete="off" required/>
+            <input type="hidden" name="n" value="117" />
+            <input type="hidden" name="type" value="10" />
+            <input type="hidden" name="drop" value="0" />
+            <input type="hidden" name="pop" value="0" />
+            <input type="hidden" name="ac_type" value="h3c" />
+            <input type="hidden" name="mac" value="" />
+        </fieldset>
+        <label for="option-one" class="pure-checkbox">
+            <input type="checkbox" name="auto" value="auto">
+            自动登录
+            <input type="checkbox" name="autorelogin" value="autorelogin">
+            掉线重连
+            <div class="senders">
+                <span>
+                    <input type="checkbox" name="network[]" value="v4">IPv4
+                </span>
+                <iframe name="sendv4" id="sendv4" style=""></iframe>
+            </div>
+            <div class="senders">
+                <span>
+                    <input type="checkbox" name="network[]" value="v6">IPv6
+                </span>
+                <iframe name="sendv6" id="sendv6" style=""></iframe>
+            </div>
+        </label>
+            
+        <button type="button" id="login" class="pure-button pure-button-primary">登录</button>
+        <div class="logout-container">
+        	<div class="logout-buttons">
+        		<button id="logout" class="pure-button pure-button-primary">注销</button>
+        		<button id="force-logout" class="pure-button pure-button-primary" hidden>无账号注销</button>
+        	</div>
+        	<button class="logout-switch pure-button pure-button-primary"></button>
+        </div>
+    </form>
+    <footer>
+        <div class="copyright">Copyright &copy; 2012-2015 地大镜像站 <a href="http://zh.eming.li" target="_blank">怡红公子</a> 版权所有， 保留一切权利。</div>
+        <div class="mirror-notifer">
+            <span>×</span>
+            好消息！地大(北京)镜像站招新啦！我们主要是维护校内的 Linux 资源镜像站，当然也会做很多有趣的东西！如果你对我们的工作感兴趣或者是对 Linux 和 计算机世界 感兴趣的话，欢迎 <a href="mailto:i@imnerd.org" target="_blank">发送邮件</a> 加入我们，或者 <a href="http://jq.qq.com/?_wv=1027&k=fjNpGx" target="_blank">点击这里</a> 加入我们的QQ群。我们欢迎你的加入！
+        	
+        </div>
+    </footer>
+    <a class="ribbon" href="https://git.cugbteam.org/lizheming/gate.cugbteam.org"><img style="position: absolute; top: 0; left: 0; border: 0;" src="resources/img/forkme.png" alt="Fork me on GitCUGB"></a>
+    <div class="alert"></div>
+    <script src="common.js" type="text/javascript" inline></script>
+    <script src="main.js" type="text/javascript" inline></script>
+
+    <!-- Piwik -->
+    <script type="text/javascript">
+      var _paq = _paq || [];
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="//tongji.cugbteam.org/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <noscript><p><img src="//tongji.cugbteam.org/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
+    <script type="text/javascript">
+		function encode64(inp){
+		var key="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+		var chr1,chr2,chr3,enc3,enc4,i=0,out="";
+		while(i<inp.length){
+		chr1=inp.charCodeAt(i++);if(chr1>127) chr1=88;
+		chr2=inp.charCodeAt(i++);if(chr2>127) chr2=88;
+		chr3=inp.charCodeAt(i++);if(chr3>127) chr3=88;
+		if(isNaN(chr3)) {enc4=64;chr3=0;} else enc4=chr3&63;
+		if(isNaN(chr2)) {enc3=64;chr2=0;} else enc3=((chr2<<2)|(chr3>>6))&63;
+		out+=key.charAt((chr1>>2)&63)+key.charAt(((chr1<<4)|(chr2>>4))&63)+key.charAt(enc3)+key.charAt(enc4);
+		}
+		return encodeURIComponent(out);
+		}
+
+		(function stats(sid){
+		var referer=encode64(document.referrer);
+		var thispage=encode64(window.location.pathname+location.search);
+		var date=new Date();
+		var time=date.getTime();
+		var resolution= screen.width + "x" + screen.height;
+		document.writeln("<img src=\"http://tongji.cugbteam.org/phpTraffic/count.php?sid="+sid+"&p="+thispage+"&r="+referer+"&t="+time+"&res="+resolution+"\" alt=\"\" border=\"0\" style=\"display:none\"/>\n");
+		})(319640);
+    </script>
+
+    <div class="absolute-button">
+        <a href="http://beidi.cugbteam.org" title="北地北地!" class="pure-button button-c">北地北地!</a>
+        <button class="ds-thread-button pure-button button-b">说点什么？</button>   
+    </div>
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="index" data-title="网关登陆页面" data-url="http://gate.cugbteam.org"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"cugbgate"}, duoshuoThread = document.querySelector(".ds-thread");
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    (window.onhashchange = function() {
+    	if( location.hash === "#comment" ) duoshuoThread.classList.add("show");
+    	else duoshuoThread.classList.remove("show");
+    })()
+  	document.querySelector(".ds-thread-button").onclick = function() {
+    	location.hash = location.hash != "#comment" ? "#comment" : "#"
+    }
+    </script>
+    <!-- 多说公共JS代码 end -->
+</body>
+</html>
