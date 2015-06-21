@@ -35,10 +35,39 @@
         float: left
     }
 
-    #logout {
+    .logout-container {
         width: 45%;
-        float: right
+        float: right;
+        height: 34px;
+        overflow: hidden;
     }
+	
+	.logout-buttons {
+		width: 80%;
+		float: left;
+	}
+
+	.logout-switch {
+		width: 20%;
+		float:right;
+		border-left: 1px solid #FFF;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+	
+	.logout-switch::after {
+		content: "▼";
+	}
+	.logout-switch.down::after {
+		content: "▲";
+	}
+	#logout, #force-logout{
+		cursor: pointer;
+		width:100%;
+		display: block;
+		border-top-right-radius:0;
+		border-bottom-right-radius: 0;
+	}
 
     .alert {
         width: 100%;
@@ -149,6 +178,15 @@
         }
     }
 
+	@media screen and (max-width:500px) {
+		#login {
+			width: 20%;
+		}
+
+		.logout-container {
+			width: 70%;
+		}
+	}
     @media screen and (max-width:600px) {
         .ds-thread,.absolute-button {
             display: none
@@ -233,7 +271,13 @@
         </label>
             
         <button type="button" id="login" class="pure-button pure-button-primary">登录</button>
-        <button type="button" id="logout" class="pure-button pure-button-primary">注销</button>
+        <div class="logout-container">
+        	<div class="logout-buttons">
+        		<button id="logout" class="pure-button pure-button-primary">注销</button>
+        		<button id="force-logout" class="pure-button pure-button-primary" hidden>注销当前账号</button>
+        	</div>
+        	<button class="logout-switch pure-button pure-button-primary"></button>
+        </div>
     </form>
     <footer>
         <div class="copyright">Copyright &copy; 2012-2015 地大镜像站 <a href="http://zh.eming.li" target="_blank">怡红公子</a> 版权所有， 保留一切权利。</div>
@@ -316,7 +360,7 @@
         var hostname = { 
             v4: "http://202.204.105.195:3333", 
             v6: "http://[2001:da8:214:102:d6be:d9ff:feaa:422a]"
-        }, method = {LOGIN: "do_login", LOGOUT: "force_logout"};
+        }, method = {LOGIN: "do_login", LOGOUT: "force_logout", FORCELOGOUT: "do_logout"};
         var type = Object.keys(hostname), res = {HOST:hostname};
         for(var m in method) {
             res[m] = {};
@@ -382,6 +426,14 @@
                 setTimeout(function() {iframe[item.value].classList.toggle("display")}, 3000);          
             })
         },
+        forcelogout: function(e) {
+        	networkInputs.filter(function(item) {return item.checked}).forEach(function(item) {
+        		iframe[item.value].src = URL.FORCELOGOUT[item.value];
+                iframe[item.value].classList.toggle('display');
+                setTimeout(function() {iframe[item.value].classList.toggle("display")}, 3000); 
+        	})
+			e.preventDefault();
+        },
         autorelogin: function(second) {
             var that = this;
             setInterval(function() {
@@ -390,10 +442,20 @@
                     console.log('relogined!');
                 })
             }, (second||60) * 1000);
+        },
+        logoutswitch: function(e) {
+        	e.preventDefault();
+        	[].forEach.call(document.querySelectorAll(".logout-buttons button"), function(button) {
+        		if( button.hasAttribute("hidden") ) button.removeAttribute("hidden");
+        		else button.setAttribute("hidden", true);
+        	})
+        	this.classList.toggle("down");
         }
     }
     document.querySelector('#login').addEventListener('click', events.login);
     document.querySelector('#logout').addEventListener('click', events.logout);
+    document.querySelector("#force-logout").addEventListener("click", events.forcelogout);
+    document.querySelector(".logout-container .logout-switch").addEventListener("click", events.logoutswitch);
     option.query();
     if(option.input.checkBox[0].checked) events.login();
     if(option.input.checkBox[1].checked) events.autorelogin(15);
